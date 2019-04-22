@@ -1,7 +1,10 @@
 /**
  *  数据响应系统的基本思路 --> Object.defineProperty
  */
-
+/**
+ * @description
+ * $watch 函数所做的事情就是想方设法地访问到你要观测的字段，从而触发该字段的 get 函数，进而收集依赖(观察者)。
+ */
 let Target = null;
 function $watch(exp, fn) {
   Target = fn;
@@ -55,6 +58,9 @@ cycle(data);
 
 $watch('a.b', () => {
   console.log('change a.b');
+});
+$watch('a', () => {
+  console.log('change a');
 });
 $watch('b', () => {
   console.log('change b');
